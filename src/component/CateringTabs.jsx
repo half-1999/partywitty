@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Package from "./tabs/Package";
 import Overview from "./tabs/Overview";
 import Gallery from "./tabs/Gallery";
@@ -19,6 +19,19 @@ const TABS = [
 
 export default function CateringTabs() {
   const [activeTab, setActiveTab] = useState("Package");
+  const contentRef = useRef(null);
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+
+    // Smooth scroll to content
+    setTimeout(() => {
+      contentRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 50);
+  };
 
   return (
     <div className="mt-6">
@@ -28,7 +41,7 @@ export default function CateringTabs() {
           {TABS.map((tab) => (
             <button
               key={tab}
-              onClick={() => setActiveTab(tab)}
+              onClick={() => handleTabChange(tab)}
               className={`px-5 py-2 rounded-full cursor-pointer shadow-2xl whitespace-nowrap font-medium transition
                 ${
                   activeTab === tab
@@ -43,7 +56,10 @@ export default function CateringTabs() {
       </div>
 
       {/* ================= CONTENT AREA ================= */}
-      <div className="mt-3 bg-white rounded-xl p-2 shadow min-h-[300px]">
+      <div
+        ref={contentRef}
+        className="mt-3 bg-white rounded-xl p-2 shadow min-h-[300px]"
+      >
         {activeTab === "Overview" && <Overview />}
         {activeTab === "Package" && <Package />}
         {activeTab === "Gallery" && <Gallery />}
