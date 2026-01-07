@@ -82,7 +82,7 @@ export default function CateringDetails() {
       <CateringTabs />
 
       {/* FAQ ACCORDION */}
-      <div className="bg-white rounded-xl shadow border border-gray-300 overflow-hidden m-2">
+      <div className="bg-white rounded-xl shadow border border-gray-300 overflow-hidden mt-5 mb-2">
         <div
           onClick={() => toggleAccordion("faq")}
           className="flex justify-between items-center p-2 cursor-pointer font-semibold"
