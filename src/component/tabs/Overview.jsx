@@ -6,15 +6,16 @@ import CateringDetails from "./CateringDetails";
 import Reviews from "./Review";
 import Posts from "./Post";
 
-const Overview = () => {
+const Overview = ({ packageData, clubData }) => {
+  console.log(packageData, clubData);
   return (
-    <div className="space-y-5">
-      <Package />
-      <Gallery />
-      <Teaser />
-      <CateringDetails />
-      <Reviews />
-      <Posts />
+    <div className="space-y-10">
+      <Package packageData={packageData} />
+      <Gallery images={clubData?.gallery} />
+      <Teaser clubData={clubData?.teasers} />
+      <CateringDetails clubData={clubData} />
+      <Reviews packageData={packageData} />
+      {/* <Posts /> */}
     </div>
   );
 };

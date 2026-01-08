@@ -15,23 +15,30 @@ import NotFound from "./pages/NotFound";
 export default function App() {
   return (
     <Routes>
-      {/* Redirect root to dashboard */}
-      <Route
-        path="/"
-        element={<Navigate to="/dashboard/catering/123" replace />}
-      />
+      {/* Redirect root */}
+      <Route path="/" element={<Navigate to="/dashboard/catering" replace />} />
 
-      {/* Public */}
+      {/* Public Routes */}
       <Route element={<MainLayout />}>
         <Route path="/login" element={<Login />} />
       </Route>
 
-      {/* Dashboard */}
+      {/* Dashboard Routes */}
       <Route path="/dashboard" element={<DashboardLayout />}>
         <Route index element={<Dashboard />} />
+
+        {/* Catering */}
         <Route path="catering" element={<CateringList />} />
-        <Route path="catering/:id" element={<CateringDetails />} />
-        <Route path="catering/:id/book" element={<CateringBooking />} />
+        <Route
+          path="catering/:club_slug/:package_slug"
+          element={<CateringDetails />}
+        />
+        <Route
+          path="catering/:club_slug/:package_slug/book"
+          element={<CateringBooking />}
+        />
+
+        {/* Profile */}
         <Route path="profile" element={<Profile />} />
       </Route>
 

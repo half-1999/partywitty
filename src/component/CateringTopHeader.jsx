@@ -33,7 +33,7 @@ export default function CateringTopHeader() {
         {/* MAIN GRID */}
         <div className="flex flex-col md:flex-row gap-5">
           {/* LEFT INFO */}
-          <div className="w-full md:w-[22%] space-y-2">
+          <div className="w-full md:w-1/4 space-y-2">
             <h2 className="font-bold text-lg flex items-center gap-2">
               <Utensils className="w-5 h-5" />
               {data.title}
@@ -43,7 +43,7 @@ export default function CateringTopHeader() {
               Cater’s Code - {data.code}
             </div>
 
-            <div className="flex items-center gap-3 text-sm">
+            <div className="flex flex-wrap items-center gap-3 text-sm">
               <span className="flex items-center gap-1 font-semibold">
                 <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                 {data.rating}
@@ -55,9 +55,11 @@ export default function CateringTopHeader() {
 
             <div className="text-sm font-medium">
               Serves In - {data.locations.primary}{" "}
-              <span className="text-blue-600 font-semibold cursor-pointer">
-                +{data.locations.more.length} More
-              </span>
+              {data.locations.more.length > 0 && (
+                <span className="text-blue-600 font-semibold cursor-pointer">
+                  +{data.locations.more.length} More
+                </span>
+              )}
             </div>
 
             <div className="text-sm underline font-semibold cursor-pointer">
@@ -66,9 +68,9 @@ export default function CateringTopHeader() {
           </div>
 
           {/* RIGHT STACK */}
-          <div className="w-full md:w-[88%] space-y-4">
+          <div className="w-full md:w-3/4 space-y-4">
             {/* TIMER + PRICE */}
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
               <div className="bg-white rounded-full px-6 py-2 text-sm font-bold shadow">
                 03 : 40 : 59
               </div>
@@ -82,7 +84,7 @@ export default function CateringTopHeader() {
             </div>
 
             {/* AMOUNTS */}
-            <div className="grid md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               <WhitePill text={`Total Amount : ₹${data.pricing.total}`} />
               <WhitePill
                 text={`Advance Booking Amount : ₹${data.pricing.advance}`}
@@ -91,7 +93,7 @@ export default function CateringTopHeader() {
             </div>
 
             {/* DATE BAR */}
-            <div className="bg-gradient-to-r from-yellow-400 to-orange-600 rounded-xl text-white flex justify-between px-4 py-4 font-semibold">
+            <div className="bg-gradient-to-r from-yellow-400 to-orange-600 rounded-xl text-white flex flex-col sm:flex-row justify-between px-4 py-4 font-semibold gap-2 sm:gap-0">
               <div className="flex items-center gap-2">
                 <Calendar className="w-5 h-5" />
                 {data.dateTime.date}
