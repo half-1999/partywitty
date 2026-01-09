@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaMapMarkerAlt, FaClock, FaUtensils } from "react-icons/fa";
-import { IMAGE_BASE } from "../../component/baseURL";
+import { IMAGE_BASE, API_BASE } from "../../component/baseURL";
 import { ArrowLeft } from "lucide-react";
 
 export default function CateringList() {
@@ -22,7 +22,7 @@ export default function CateringList() {
       formData.append("package_slug", "veg-food-only");
 
       const response = await axios.post(
-        "https://admin.partywitty.com/master/APIs/Web/packageDetails",
+        `${API_BASE}/Web/packageDetails`,
         formData
       );
 
@@ -48,7 +48,7 @@ export default function CateringList() {
       formData.append("longitude", longitude);
 
       const response = await axios.post(
-        "https://admin.partywitty.com/master/APIs/Web/getClubDetails",
+        `${API_BASE}/Web/getClubDetails`,
         formData
       );
 
@@ -72,7 +72,7 @@ export default function CateringList() {
       <div className="flex items-center gap-4 mb-5">
         <button
           onClick={() => navigate(-1)}
-          className="p-1 rounded hover:bg-gray-100"
+          className="p-1 rounded hover:bg-gray-100  cursor-pointer"
         >
           <ArrowLeft size={20} />
         </button>

@@ -6,7 +6,6 @@
   scrollbar-width: none;
 }
 
-/* Add this in your global CSS (e.g., index.css or App.css) */
 ::-webkit-scrollbar {
   width: 12px; /* scrollbar width */
   height: 8px; /* horizontal scrollbar height */
@@ -25,4 +24,18 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #4338ca; /* darker shade on hover (optional) */
+}
+
+/* Disable text selection */
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Disable image drag */
+img {
+  pointer-events: none;
+  -webkit-user-drag: none;
 }

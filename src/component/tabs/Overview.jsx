@@ -4,7 +4,6 @@ import Gallery from "./Gallery";
 import Teaser from "./Teaser";
 import CateringDetails from "./CateringDetails";
 import Reviews from "./Review";
-import Posts from "./Post";
 
 const Overview = ({ packageData, clubData }) => {
   console.log(packageData, clubData);
@@ -15,7 +14,6 @@ const Overview = ({ packageData, clubData }) => {
       <Teaser clubData={clubData?.teasers} />
       <CateringDetails clubData={clubData} />
       <Reviews packageData={packageData} />
-      {/* <Posts /> */}
     </div>
   );
 };

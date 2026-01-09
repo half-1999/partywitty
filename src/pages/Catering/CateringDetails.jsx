@@ -1,15 +1,13 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import CateringTabs from "../../component/CateringTabs";
-import CateringTopHeader from "../../component/CateringTopHeader";
 import { ArrowLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { FaChevronDown, FaStar } from "react-icons/fa";
-import { FiHeart, FiShare2 } from "react-icons/fi";
 import BottomBookingBar from "../../component/BottomBookingBar";
 import axios from "axios";
 import CateringPackageCard from "../../component/CateringPackageCard";
-import PackageHorizontalCard from "../../component/tabs/PackageCardScroll";
 import RecommendedPackages from "../../component/RecommendedPackages";
+import { API_BASE } from "../../component/baseURL";
 
 export default function CateringDetails() {
   const [openAccordion, setOpenAccordion] = useState(null);
@@ -20,7 +18,6 @@ export default function CateringDetails() {
   const [club, setClub] = useState(null);
   const { club_slug, package_slug } = useParams();
 
-  console.log(club_slug, package_slug);
   const fetchPackageDetails = async () => {
     try {
       setLoading(true);
@@ -31,7 +28,7 @@ export default function CateringDetails() {
       formData.append("package_slug", package_slug);
 
       const response = await axios.post(
-        "https://admin.partywitty.com/master/APIs/Web/packageDetails",
+        `${API_BASE}/Web/packageDetails`,
         formData
       );
       console.log(response);
@@ -61,7 +58,7 @@ export default function CateringDetails() {
       formData.append("longitude", longitude);
 
       const response = await axios.post(
-        "https://admin.partywitty.com/master/APIs/Web/getClubDetails",
+        `${API_BASE}/Web/getClubDetails`,
         formData
       );
 
@@ -87,7 +84,7 @@ export default function CateringDetails() {
       <div className="flex items-center gap-4 mb-5">
         <button
           onClick={() => navigate(-1)}
-          className="p-1 rounded hover:bg-gray-100"
+          className="p-1 rounded hover:bg-gray-100  cursor-pointer"
         >
           <ArrowLeft size={20} />
         </button>
@@ -108,7 +105,6 @@ export default function CateringDetails() {
 
       {packages[0] && (
         <>
-          {/* <PackageHorizontalCard packageData={packages[0]} packages={club} /> */}
           <CateringPackageCard data={packages[0]} />
 
           <CateringTabs packageData={packages[0]} clubData={club} />

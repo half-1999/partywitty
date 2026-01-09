@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Clock, Utensils, Wine } from "lucide-react";
-import { IMAGE_BASE } from "./baseURL";
+import { IMAGE_BASE, API_BASE } from "./baseURL";
 
 export default function RecommendedPackages({ packageId, clubId }) {
   const [packages, setPackages] = useState([]);
@@ -14,7 +14,7 @@ export default function RecommendedPackages({ packageId, clubId }) {
       formData.append("club_id", clubId);
 
       const res = await axios.post(
-        "https://admin.partywitty.com/master/APIs/ClubPackage/packageOfSameClub",
+        `${API_BASE}/ClubPackage/packageOfSameClub`,
         formData
       );
 
@@ -47,14 +47,12 @@ export default function RecommendedPackages({ packageId, clubId }) {
             key={pkg.id}
             className="rounded-3xl  shadow-2xl hover:shadow-xl transition overflow-hidden bg-white"
           >
-            {/* Thumbnail */}
             <img
               src={`${IMAGE_BASE}${pkg.thumbnail}`}
               alt={pkg.title}
               className="w-full h-48 object-cover"
             />
 
-            {/* Content */}
             <div className="p-5 space-y-3">
               <h3 className="font-semibold text-lg">{pkg.title}</h3>
 
@@ -74,7 +72,6 @@ export default function RecommendedPackages({ packageId, clubId }) {
                 )}
               </div>
 
-              {/* Inclusion Summary */}
               <div className="text-sm text-gray-700 space-y-1">
                 {pkg.inclusion?.total_non_alcoholic && (
                   <p>
@@ -89,11 +86,6 @@ export default function RecommendedPackages({ packageId, clubId }) {
                   </p>
                 )}
               </div>
-
-              {/* CTA */}
-              {/* <button className="w-full mt-3 bg-violet-600 text-white py-2 rounded-xl text-sm hover:bg-violet-700 transition">
-                View Package
-              </button> */}
             </div>
           </div>
         ))}

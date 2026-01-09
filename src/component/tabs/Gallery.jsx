@@ -97,7 +97,6 @@ const Gallery = ({ images }) => {
               </div>
             )}
 
-            {/* FRONT CARD */}
             <div className="absolute inset-0 rounded-2xl shadow-xl bg-purple-600/80 backdrop-blur-xl flex flex-col items-center justify-center text-white">
               <div className="text-4xl font-bold">{item.images.length}+</div>
               <div className="text-sm tracking-widest mt-1">PICTURES</div>

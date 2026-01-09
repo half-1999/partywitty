@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Clock,
   Calendar,
@@ -75,14 +74,11 @@ export default function CateringPackageCard({ data }) {
 
   return (
     <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-300 bg-white flex flex-col">
-      {/* TOP INFO BAR */}
       <div className="bg-gradient-to-r from-cyan-400 to-green-400 text-center py-2 text-sm font-semibold text-white">
         Make your counter bid and grab the best deal for your catering!
       </div>
 
-      {/* MAIN CONTENT */}
       <div className="p-4 sm:p-6 flex flex-col md:flex-row gap-4">
-        {/* LEFT IMAGE */}
         <div className="w-full md:w-1/3 flex-shrink-0 h-48 md:h-auto">
           <img
             src={
@@ -95,7 +91,6 @@ export default function CateringPackageCard({ data }) {
           />
         </div>
 
-        {/* RIGHT DETAILS */}
         <div className="flex-1 flex flex-col gap-4">
           {/* HEADER */}
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
@@ -120,7 +115,6 @@ export default function CateringPackageCard({ data }) {
               </div>
             </div>
 
-            {/* TIME + PRICE */}
             <div className="flex flex-col sm:items-end gap-2 min-w-[140px]">
               <p className="text-sm font-medium text-gray-700 flex items-center gap-2">
                 <Clock size={16} /> {data?.open_time} – {data?.close_time}
@@ -134,7 +128,6 @@ export default function CateringPackageCard({ data }) {
             </div>
           </div>
 
-          {/* AMOUNT PILLS */}
           <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 flex-wrap justify-between">
             <div className="bg-white shadow-md rounded-full px-4 py-2 text-sm font-semibold min-w-[160px] text-center">
               Total Amount : ₹{(data?.price || 0) * (data?.mg || 0)}
@@ -148,7 +141,6 @@ export default function CateringPackageCard({ data }) {
             </div>
           </div>
 
-          {/* DATE / TIME / GUEST */}
           <div className="w-full bg-gradient-to-r from-yellow-400 via-orange-500 to-orange-600 rounded-2xl px-4 py-3 flex flex-col sm:flex-row justify-between items-start sm:items-center text-white font-semibold gap-2">
             <div className="flex items-center gap-2">
               <Calendar size={18} /> {data?.event_date || "10 April 2025"}
@@ -161,7 +153,6 @@ export default function CateringPackageCard({ data }) {
             </div>
           </div>
 
-          {/* HIGHLIGHTS BADGES */}
           <div className="flex flex-wrap gap-2 mt-3">
             {highlightBadges
               .filter((badge) => badge.condition)
@@ -172,7 +163,6 @@ export default function CateringPackageCard({ data }) {
         </div>
       </div>
 
-      {/* BOTTOM INFO BAR */}
       <div className="bg-gradient-to-r from-cyan-400 to-green-400 text-center py-2 text-sm font-semibold text-white">
         Great Choice! ₹500 would be Saved Instantly on This Booking!
       </div>
@@ -180,7 +170,6 @@ export default function CateringPackageCard({ data }) {
   );
 }
 
-/* ---------- REUSABLE BADGE ---------- */
 const Badge = ({ icon, text }) => (
   <div className="flex items-center gap-2 px-3 py-2 border rounded-full bg-gray-50 text-sm flex-shrink-0">
     {icon} {text}

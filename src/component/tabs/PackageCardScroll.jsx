@@ -49,8 +49,6 @@ export default function PackageHorizontalSlider({ packages }) {
   );
 }
 
-/* ---------------- CARD ---------------- */
-
 function HorizontalCard({ pkg }) {
   const navigate = useNavigate();
 
@@ -59,7 +57,6 @@ function HorizontalCard({ pkg }) {
 
     navigate(`/dashboard/catering/${pkg.club_slug}/${pkg.package_slug}`);
   };
-  //   console.log(pkg);
   const showAllInclusions = () => {
     const inc = pkg?.inclusion || {};
 
@@ -103,7 +100,6 @@ function HorizontalCard({ pkg }) {
 
   return (
     <div className="w-full bg-white rounded-2xl shadow-2xl gap-5 overflow-hidden flex">
-      {/* LEFT IMAGE */}
       <div className="w-[30%]">
         <img
           src={
@@ -118,10 +114,8 @@ function HorizontalCard({ pkg }) {
         />
       </div>
 
-      {/* RIGHT CONTENT */}
       <div className="w-[70%] flex flex-col">
         <div className="flex p-6 gap-6 flex-1">
-          {/* DETAILS */}
           <div className="flex-1">
             <h2 className="text-xl font-bold">{pkg?.title}</h2>
 
@@ -141,7 +135,6 @@ function HorizontalCard({ pkg }) {
             </div>
           </div>
 
-          {/* INCLUSION */}
           <div className="w-64 border-l pl-6">
             <h3 className="font-semibold text-lg mb-2 text-right">Inclusion</h3>
 
@@ -168,12 +161,9 @@ function HorizontalCard({ pkg }) {
           </div>
         </div>
 
-        {/* BOTTOM BAR */}
         <div className="relative flex items-center justify-between px-6 py-2 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-b-3xl overflow-hidden">
-          {/* Diagonal divider */}
           <div className="absolute left-[140px] top-0 h-full w-3 bg-white transform -skew-x-12"></div>
 
-          {/* Left action */}
           <button
             className="relative z-10 text-white font-semibold text-sm px-4 py-2 rounded-md hover:bg-white/10 transition"
             onClick={handleViewDetails}
@@ -181,7 +171,6 @@ function HorizontalCard({ pkg }) {
             View Details
           </button>
 
-          {/* Right offer text */}
           <p className="relative z-10 text-white text-sm font-semibold text-right">
             <span className="text-xs font-medium opacity-90">
               Coupon Code: PARTY25

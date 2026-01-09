@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { IMAGE_BASE } from "../baseURL";
 import Swal from "sweetalert2";
 
-const CateringDetails = ({ clubData, packageData }) => {
+const CateringDetails = ({ clubData }) => {
   const [showMore, setShowMore] = useState(false);
-  console.log(packageData);
   if (!clubData) return null;
 
   const {
@@ -44,7 +43,6 @@ const CateringDetails = ({ clubData, packageData }) => {
   return (
     <div className="p-4 md:p-6">
       <div className="space-y-8">
-        {/* ================= ABOUT ================= */}
         <section>
           <h2 className="text-2xl font-bold mb-3">About {name}</h2>
 
@@ -77,7 +75,6 @@ const CateringDetails = ({ clubData, packageData }) => {
 
         <hr />
 
-        {/* ================= MENUS ================= */}
         {club_menu.length > 0 && (
           <section>
             <h2 className="text-2xl font-bold mb-4">Available Menus</h2>
@@ -94,7 +91,6 @@ const CateringDetails = ({ clubData, packageData }) => {
                     {menu.images?.length || 0} Menu Images Available
                   </p>
 
-                  {/* MENU IMAGES */}
                   {menu.images?.length > 0 && (
                     <div className="grid grid-cols-3 gap-3 mt-3">
                       {menu.images.map((img, index) => (
@@ -129,7 +125,6 @@ const CateringDetails = ({ clubData, packageData }) => {
 
         <hr />
 
-        {/* ================= PACKAGE INCLUSIONS ================= */}
         {party_packages.length > 0 && (
           <section>
             <h2 className="text-2xl font-bold mb-4">Catering Inclusions</h2>
@@ -169,7 +164,6 @@ const CateringDetails = ({ clubData, packageData }) => {
 
         <hr />
 
-        {/* ================= CATERING FEATURES ================= */}
         <section>
           <h2 className="text-2xl font-bold mb-4">Catering Features</h2>
 

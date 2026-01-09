@@ -5,13 +5,11 @@ import Gallery from "./tabs/Gallery";
 import Teaser from "./tabs/Teaser";
 import Reviews from "./tabs/Review";
 import Posts from "./tabs/Post";
-import CateringInfo from "./tabs/CateringDetails"; // Added CateringInfo
-import PackageHorizontalCard from "./tabs/PackageCardScroll";
+import CateringInfo from "./tabs/CateringDetails";
 
 const TABS = [
   "Overview",
   "Menu",
-  // "Package",
   "Gallery",
   "Teaser",
   "Catering Details",
@@ -20,7 +18,7 @@ const TABS = [
 ];
 
 export default function CateringTabs({ packageData, clubData }) {
-  const [activeTab, setActiveTab] = useState("Overview");
+  const [activeTab, setActiveTab] = useState("Teaser");
   const contentRef = useRef(null);
 
   const handleTabChange = (tab) => {
@@ -42,18 +40,15 @@ export default function CateringTabs({ packageData, clubData }) {
     }, 50);
   };
 
-  console.log(packageData, clubData);
-
   return (
     <div className="mt-6">
-      {/* ================= STICKY TABS BAR ================= */}
       <div className="sticky top-0 z-50 bg-white pt-2">
         <div className="bg-white rounded-xl p-2 shadow flex gap-3 overflow-x-auto">
           {TABS.map((tab) => (
             <button
               key={tab}
               onClick={() => handleTabChange(tab)}
-              className={`px-5 py-2 rounded-full whitespace-nowrap font-medium transition
+              className={`px-5 py-2 rounded-full whitespace-nowrap cursor-pointer font-medium transition
                 ${
                   activeTab === tab
                     ? "bg-[#6C5CE7] text-white shadow"
@@ -66,7 +61,6 @@ export default function CateringTabs({ packageData, clubData }) {
         </div>
       </div>
 
-      {/* ================= CONTENT AREA ================= */}
       <div
         ref={contentRef}
         className="mt-10 bg-white rounded-xl p-4 shadow min-h-[300px]"
@@ -78,13 +72,6 @@ export default function CateringTabs({ packageData, clubData }) {
         {activeTab === "Menu" && (
           <Package packageData={packageData} packages={clubData} />
         )}
-
-        {/* {activeTab === "Package" && (
-          <PackageHorizontalCard
-            packageData={packageData}
-            packages={clubData}
-          />
-        )} */}
 
         {activeTab === "Gallery" && <Gallery images={clubData?.gallery} />}
 

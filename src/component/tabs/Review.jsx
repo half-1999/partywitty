@@ -16,7 +16,6 @@ export default function Reviews({ packageData }) {
     }
   };
 
-  /* ----------- NO REVIEWS STATE ----------- */
   if (reviewsData.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-16 text-center">
@@ -31,13 +30,11 @@ export default function Reviews({ packageData }) {
 
   return (
     <div className="mx-auto space-y-6">
-      {/* ----------- REVIEWS LIST ----------- */}
       {reviewsData.slice(0, visibleCount).map((review) => (
         <div
           key={review.id}
           className="rounded-3xl p-6 bg-gradient-to-r from-purple-50 via-white to-yellow-50 shadow-sm"
         >
-          {/* Header */}
           <div className="flex justify-between items-start">
             <div className="flex gap-4">
               <img
@@ -69,10 +66,8 @@ export default function Reviews({ packageData }) {
             <MoreVertical className="text-slate-400" />
           </div>
 
-          {/* Text */}
           <p className="text-slate-600 mt-4 leading-relaxed">{review.text}</p>
 
-          {/* Images */}
           {review.images.length > 0 && (
             <div className="flex gap-3 mt-4">
               {review.images.map((img, idx) => (
@@ -88,7 +83,6 @@ export default function Reviews({ packageData }) {
         </div>
       ))}
 
-      {/* ----------- TOGGLE BUTTON ----------- */}
       {reviewsData.length > INITIAL_COUNT && (
         <div className="flex justify-center pt-4">
           <button

@@ -6,7 +6,7 @@ const MySwal = withReactContent(Swal);
 
 import { IMAGE_BASE } from "../baseURL";
 
-const VIDEO_BASE_URL = IMAGE_BASE; // assuming videos are stored in the same base URL
+const VIDEO_BASE_URL = IMAGE_BASE;
 
 const Teaser = ({ clubData = [] }) => {
   const [loaded, setLoaded] = useState({});
@@ -17,9 +17,6 @@ const Teaser = ({ clubData = [] }) => {
     setLoaded((prev) => ({ ...prev, [id]: true }));
   };
 
-  // ===================
-  // REEL POPUP
-  // ===================
   const openReel = (item) => {
     MySwal.fire({
       showConfirmButton: false,
@@ -61,7 +58,6 @@ const Teaser = ({ clubData = [] }) => {
     <div className="p-4">
       <h2 className="text-xl font-bold mb-4">Teaser</h2>
 
-      {/* HORIZONTAL SCROLL */}
       <div className="flex gap-4 overflow-x-auto scrollbar-hide">
         {clubData.map((item) => (
           <div
@@ -73,7 +69,6 @@ const Teaser = ({ clubData = [] }) => {
               <div className="absolute inset-0 animate-pulse bg-gray-300" />
             )}
 
-            {/* VIDEO THUMB */}
             <video
               src={videoUrl(item.video)}
               muted
@@ -86,12 +81,10 @@ const Teaser = ({ clubData = [] }) => {
               }`}
             />
 
-            {/* TULIPS BADGE */}
             <div className="absolute top-2 left-2 bg-black/60 text-white text-xs px-2 py-1 rounded-full">
               Earn {item.tulips} Tulips
             </div>
 
-            {/* CATEGORY TAG */}
             <div className="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">
               {item.category}
             </div>
